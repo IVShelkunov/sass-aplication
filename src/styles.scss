@@ -4,6 +4,11 @@ $primary-color: #3498db;
 $text-color:#2c3e50;
 $padding-base:0.9em;
 $ui-color:#70c28e;
+body {
+    background-color: #6b7899;
+    margin: 0;
+    padding: 0;
+}
 @mixin corner-round($value:8px) {
     border-radius: $value;
 }
@@ -12,6 +17,11 @@ $ui-color:#70c28e;
     @media (max-width:768px) {
         @content;
     }
+}
+@mixin card-variant($bg-color, $border-color) {
+    background-color: $bg-color;
+    border: 2px solid $border-color;
+    @if(lightness($bg-color) < 60%) { color: white; .price{color:$ui-color}};
 }
 .header {
     background-color: $head-color;
@@ -30,22 +40,25 @@ $ui-color:#70c28e;
     gap: 4px;
 }
 .card {
-    position: relative;
-    background-color: $primary-color;
-    border: 2px solid black;
+    @include card-variant($primary-color,black);
+    &.sale  {
+        @include card-variant(blue, yellow);
+    }
     @include corner-round;
+    position: relative;
     padding:$padding-base;
     color: $text-color;
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap:0.5em;
+    
     .sale-label {
         color:yellow;
+        font-weight: 800;
         position: absolute;
-        top:30px;
-        right: 30px;
-        transform: translate(-50%,-50%);
-        transform: rotate(45deg);
+        top:35px;
+        right: 35px;
+        transform: translate(50%,-50%) rotate(45deg);
     }
     .image {
         background-color: $head-color;
@@ -56,6 +69,7 @@ $ui-color:#70c28e;
     }
     .price {
         color:color.adjust($ui-color,$lightness:-25%);
+        font-weight: 700;
     }
     button {
         background-color: $ui-color;

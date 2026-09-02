@@ -5,7 +5,7 @@ interface ProductCardProps {
 }
 export const ProductCard = ({ product }: ProductCardProps) => {
   return (
-    <div className="card">
+    <div className={`card ${product.sale ? "sale" : ""}`}>
       {product.sale && <div className="sale-label">SALE -40%</div>}
       <p className="name">{product.name}</p>
       <div className="image"></div>
