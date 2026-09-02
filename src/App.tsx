@@ -1,7 +1,16 @@
-import "./App.css";
+import { ProductList } from "./components/shared/ProductList";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <header className="header">
+        <h1>Sass demo aplication</h1>
+      </header>
+      <main className="main">
+        <ProductList />
+      </main>
+    </>
+  );
 }
 
 export default App;

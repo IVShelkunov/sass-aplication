@@ -1,0 +1,48 @@
+@use "sass:color";
+$head-color:#534069;
+$primary-color: #3498db;
+$text-color:#2c3e50;
+$padding-base:0.9em;
+$ui-color:#70c28e;
+$corner-round:8px;
+.header {
+    background-color: $head-color;
+    color: white;
+    padding: $padding-base;
+}
+.main {
+    padding: $padding-base;
+}
+.list {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 4px;
+}
+.card {
+    background-color: $primary-color;
+    border: 2px solid black;
+    border-radius: $corner-round;
+    padding:$padding-base;
+    color: $text-color;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap:0.5em;
+    .image {
+        background-color: $head-color;
+        grid-row-start: 1;
+        grid-row-end: 4;
+        grid-column-start: 2;
+    }
+    .price {
+        color:color.adjust($ui-color,$lightness:-25%);
+    }
+    button {
+        background-color: $ui-color;
+        border-radius: $corner-round;
+        &:hover {
+            background-color: color.adjust($ui-color, $lightness: -20%);
+            color: white;
+            cursor: pointer;
+        }
+    }
+}
