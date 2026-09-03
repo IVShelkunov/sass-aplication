@@ -1,0 +1,16 @@
+@use "./variables" as *;
+@use "sass:color";
+@mixin corner-round($value:8px) {
+    border-radius: $value;
+}
+
+@mixin mobile {
+    @media (max-width:768px) {
+        @content;
+    }
+}
+@mixin card-variant($bg-color, $border-color) {
+    background-color: $bg-color;
+    border: 2px solid $border-color;
+    @if(color.channel($bg-color,"lightness",$space: hsl) < 60%) { color: white; .price{color:$ui-color}};
+}
